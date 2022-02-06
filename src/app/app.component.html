@@ -1,0 +1,63 @@
+<mat-card class="example-card">
+  <mat-card-title>literalnie.fun</mat-card-title>
+
+  <mat-card-content style="margin-top: 25px;">
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Zawiera litery</mat-label>
+      <input matInput [formControl]="containsLetters">
+      <button *ngIf="containsLetters.value" matSuffix mat-icon-button aria-label="Clear" (click)="containsLetters.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Nie zawiera liter</mat-label>
+      <input matInput type="text" [formControl]="doesNotContainLetters">
+      <button *ngIf="doesNotContainLetters.value" matSuffix mat-icon-button aria-label="Clear" (click)="doesNotContainLetters.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Zawiera litery na pozycjach</mat-label>
+      <input matInput type="text" [formControl]="lettersAtPosition">
+      <button *ngIf="lettersAtPosition.value" matSuffix mat-icon-button aria-label="Clear" (click)="lettersAtPosition.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Nie zawiera liter na pozycjach</mat-label>
+      <input matInput type="text" [formControl]="lettersNotAtPosition">
+      <button *ngIf="lettersNotAtPosition.value" matSuffix mat-icon-button aria-label="Clear" (click)="lettersNotAtPosition.setValue('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <input matInput style="display: none">
+      <mat-checkbox [formControl]="distinctLetters">Różne litery w słowie</mat-checkbox>
+    </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-footer style="margin: 0px" *ngIf="result$ | async"> 
+    <mat-progress-bar *ngIf="loading$ | async" mode="query"></mat-progress-bar>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Words count</mat-label>
+      <input matInput [disabled]="true" [formControl]="wordCount">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Words (10)</mat-label>
+      <input matInput style="display: none">
+      <mat-list>
+        <mat-list-item *ngFor="let word of words.value.slice()">
+          <div mat-line>{{word}}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-form-field>
+
+  </mat-card-footer>
+</mat-card>
