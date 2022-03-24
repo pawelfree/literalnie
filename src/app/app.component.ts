@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject, combineLatest, delay, filter, finalize, map, Observable, startWith, switchMap, tap } from 'rxjs';
-import { dictionary } from './dictionary/english/words';
+import { dictionary } from './dictionary/polish/words';
 import { filterContainsLetters, filterDistincLetters, filterLetterAtPosition, filterLetterNotAtPosition, filterNotLetters } from './literalnie'
 
 @Component({
